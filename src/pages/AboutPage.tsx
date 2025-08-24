@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { Award, Target, Users, Lightbulb, MapPin, Phone, Mail, Calendar, TrendingUp } from 'lucide-react';
+import homepage3 from '../assets/homepage3.webp';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
 import { Button } from '../components/ui/button';
@@ -52,7 +53,17 @@ export function AboutPage() {
     <div className="min-h-screen pt-16">
       {/* Hero Section */}
       <section className="py-24 bg-gradient-to-br from-corporate-blue via-corporate-blue-dark to-corporate-black text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
+        {/* Background Image with Gradient Overlay */}
+        <div className="absolute inset-0 w-full h-full">
+          <img
+            src={homepage3}
+            alt="About Hero Background"
+            className="w-full h-full object-cover object-center absolute inset-0 z-0"
+            style={{ opacity: 0.25 }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-corporate-blue/80 via-corporate-blue-dark/80 to-corporate-black/90 z-10" />
+        </div>
+        <div className="absolute inset-0 opacity-10 z-20">
           <motion.div 
             className="absolute top-20 left-10 w-96 h-96 bg-corporate-orange rounded-full filter blur-3xl"
             animate={{
@@ -72,8 +83,7 @@ export function AboutPage() {
             transition={{ duration: 15, repeat: Infinity, ease: "easeInOut", delay: 2 }}
           />
         </div>
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             className="text-center mb-16"
             initial={{ opacity: 0, y: 50 }}
@@ -86,10 +96,9 @@ export function AboutPage() {
               transition={{ delay: 0.2, duration: 0.6 }}
             >
               <Badge className="bg-white/20 text-white border-white/30 px-6 py-2 text-lg backdrop-blur-sm mb-6">
-                🏢 About Our Company
+                About Us
               </Badge>
             </motion.div>
-            
             <motion.h1 
               className="text-4xl md:text-6xl font-bold mb-6"
               initial={{ opacity: 0, y: 30 }}
@@ -98,7 +107,6 @@ export function AboutPage() {
             >
               Technical & Engineering Solutions
             </motion.h1>
-            
             <motion.p 
               className="text-xl text-blue-200 max-w-3xl mx-auto leading-relaxed"
               initial={{ opacity: 0, y: 20 }}

@@ -38,59 +38,98 @@ const projects = [
 
 export default function EngineeringShowcase() {
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24 bg-gradient-to-b from-gray-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Title */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Project Showcase
-          </h2>
-          <p className="text-lg text-gray-600">
-            Explore our recent engineering projects and site visits
-          </p>
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-20">
+          <motion.h2 
+            className="text-4xl font-bold text-gray-900 mb-6"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            Engineering Excellence
+          </motion.h2>
+          <motion.div
+            className="flex items-center justify-center gap-2 mb-6"
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <div className="h-1 w-10 bg-corporate-orange rounded-full"></div>
+            <div className="h-1 w-20 bg-corporate-orange rounded-full"></div>
+            <div className="h-1 w-10 bg-corporate-orange rounded-full"></div>
+          </motion.div>
+          <motion.p 
+            className="text-lg text-gray-600 leading-relaxed"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            Discover our nationwide technical expertise through our recent site visits and professional assessments
+          </motion.p>
         </div>
 
         {/* Project Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {projects.map((project) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+          {projects.map((project, index) => (
             <motion.div
               key={project.id}
-              className="group relative h-[400px] overflow-hidden rounded-lg shadow-xl"
-              whileHover={{ y: -5 }}
-              transition={{ duration: 0.3 }}
+              className="group relative"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              viewport={{ once: true }}
             >
-              {/* Background Image */}
-              <div className="absolute inset-0">
-                <motion.img
-                  src={project.image}
-                  alt={project.title}
-                  className="h-full w-full object-cover object-center transition-transform duration-700"
-                  whileHover={{ scale: 1.1 }}
-                />
-                <div className="absolute inset-0 bg-black/60 group-hover:bg-black/50 transition-colors duration-300" />
-              </div>
-
-              {/* Content Overlay */}
-              <div className="relative h-full flex flex-col justify-between p-6 text-white">
-                {/* Title Area */}
-                <div>
-                  <h3 className="text-lg font-semibold mb-2">{project.title}</h3>
-                  <p className="text-sm text-gray-300">{project.description}</p>
+              {/* Card Container */}
+              <div className="bg-white rounded-2xl overflow-hidden shadow-lg transition-shadow duration-300 hover:shadow-xl h-[520px] flex flex-col">
+                {/* Image Container */}
+                <div className="relative h-[320px] overflow-hidden">
+                  <motion.img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover object-center transition-transform duration-700"
+                    whileHover={{ scale: 1.05 }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  
+                  {/* Top Tag */}
+                  <div className="absolute top-4 right-4">
+                    <div className="bg-white/90 backdrop-blur-sm px-4 py-1 rounded-full">
+                      <span className="text-xs font-semibold text-gray-800 tracking-wide uppercase">
+                        Site Visit
+                      </span>
+                    </div>
+                  </div>
                 </div>
 
-                {/* Navigation Hints */}
-                <div className="flex justify-between items-end">
-                  {project.showPrev && (
-                    <span className="text-sm font-medium">← PREV</span>
-                  )}
-                  {project.showNext && (
-                    <span className="text-sm font-medium ml-auto">NEXT →</span>
-                  )}
-                </div>
+                {/* Content Section */}
+                <div className="flex-1 flex flex-col p-6">
+                  {/* Location Indicator */}
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="w-1.5 h-1.5 rounded-full bg-corporate-orange"></div>
+                    <span className="text-sm font-medium text-gray-600">
+                      {project.title.split('–')[1].trim()}
+                    </span>
+                  </div>
 
-                {/* Vertical Label */}
-                <div className="absolute -right-8 top-1/2 -translate-y-1/2 rotate-90 origin-left">
-                  <span className="text-xs tracking-widest opacity-70">ENGINEERING</span>
+                  {/* Title & Description */}
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-corporate-orange transition-colors duration-300">
+                    {project.title}
+                  </h3>
+                  <p className="text-gray-600 text-sm leading-relaxed line-clamp-3">
+                    {project.description}
+                  </p>
+
+                  {/* Footer with Navigation Hints */}
+                  <div className="mt-auto pt-6 flex items-center justify-between text-sm text-gray-500">
+                    {project.showPrev && (
+                      <span className="hover:text-corporate-orange transition-colors">← Previous</span>
+                    )}
+                    {project.showNext && (
+                      <span className="ml-auto hover:text-corporate-orange transition-colors">Next →</span>
+                    )}
+                  </div>
                 </div>
               </div>
             </motion.div>

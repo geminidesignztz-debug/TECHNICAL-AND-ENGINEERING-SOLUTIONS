@@ -5,6 +5,7 @@ import { Badge } from '../../components/ui/badge';
 import { Button } from '../../components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../../components/ui/tabs';
 import { Progress } from '../../components/ui/progress';
+import Link from 'next/link';
 
 export default function ServicesPage() {
   const services = [
@@ -166,6 +167,8 @@ export default function ServicesPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {services.map((service, index) => {
               const IconComponent = service.icon;
+              // ...existing code...
+              // Only link the Battery Impedance Inspection card (first card) to the new page
               return (
                 <motion.div
                   key={index}
@@ -176,7 +179,6 @@ export default function ServicesPage() {
                 >
                   <Card className="group hover-lift interactive-card border-0 modern-shadow bg-white/90 backdrop-blur-sm relative overflow-hidden h-full">
                     <div className={`absolute top-0 left-0 w-full h-2 bg-gradient-to-r ${service.color}`}></div>
-                    
                     <CardHeader className="pb-6">
                       <div className="flex items-start space-x-4">
                         <motion.div 
@@ -196,14 +198,12 @@ export default function ServicesPage() {
                         </div>
                       </div>
                     </CardHeader>
-                    
                     <CardContent className="space-y-6">
                       <Tabs defaultValue="features" className="w-full">
                         <TabsList className="grid w-full grid-cols-2">
                           <TabsTrigger value="features">Features</TabsTrigger>
                           <TabsTrigger value="benefits">Benefits</TabsTrigger>
                         </TabsList>
-                        
                         <TabsContent value="features" className="mt-4">
                           <ul className="space-y-3">
                             {service.features.map((feature, featureIndex) => (
@@ -221,7 +221,6 @@ export default function ServicesPage() {
                             ))}
                           </ul>
                         </TabsContent>
-                        
                         <TabsContent value="benefits" className="mt-4">
                           <ul className="space-y-3">
                             {service.benefits.map((benefit, benefitIndex) => (
@@ -240,18 +239,46 @@ export default function ServicesPage() {
                           </ul>
                         </TabsContent>
                       </Tabs>
-                      
                       <motion.div 
                         className="pt-4 border-t border-gray-100"
                         whileHover={{ x: 5 }}
                       >
-                        <Button 
-                          variant="ghost" 
-                          className="text-corporate-orange hover:text-corporate-orange-dark p-0 h-auto group"
-                        >
-                          Learn More About This Service
-                          <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                        </Button>
+                        {(() => {
+                          const serviceLinks = [
+                            '/services/monitoring-with-insight',
+                            '/services/infrared-thermography',
+                            '/services/vibration-analysis',
+                            '/services/oil-analysis',
+                            '/services/motor-circuit-analysis',
+                            '/services/electrical-testing',
+                            '/services/consulting-services'
+                          ];
+                          // Only show link if index is within the serviceLinks array
+                          if (serviceLinks[index]) {
+                            return (
+                              <Link href={serviceLinks[index]} passHref legacyBehavior>
+                                <Button 
+                                  as="a"
+                                  variant="ghost" 
+                                  className="text-corporate-orange hover:text-corporate-orange-dark p-0 h-auto group"
+                                >
+                                  Learn More About This Service
+                                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                                </Button>
+                              </Link>
+                            );
+                          } else {
+                            return (
+                              <Button 
+                                variant="ghost" 
+                                className="text-corporate-orange hover:text-corporate-orange-dark p-0 h-auto group"
+                              >
+                                Learn More About This Service
+                                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                              </Button>
+                            );
+                          }
+                        })()}
                       </motion.div>
                     </CardContent>
                   </Card>

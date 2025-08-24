@@ -111,7 +111,7 @@ export default function HomePage() {
               </Badge>
             </motion.div>
 
-            {/* Main Heading with Staggered Animation */}
+            {/* Minimal Modern Heading */}
             <motion.div 
               className="space-y-4"
               initial={{ opacity: 0 }}
@@ -119,35 +119,14 @@ export default function HomePage() {
               transition={{ delay: 0.4 }}
             >
               <motion.h1 
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold"
+                className="text-4xl md:text-6xl font-bold mb-8 tracking-tight"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6, duration: 0.8 }}
               >
-                <span className="block text-white">TECHNICAL &</span>
-                <span className="block text-white">ENGINEERING</span>
-                <motion.span 
-                  className="block bg-corporate-orange px-8 py-4 rounded-2xl inline-block mt-6 text-white relative overflow-hidden"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-                    animate={{ x: [-100, 300] }}
-                    transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
-                  />
-                  SOLUTIONS
-                </motion.span>
+                Engineering Precision,<br />
+                <span className="text-corporate-orange">Monitoring with Insight.</span>
               </motion.h1>
-              
-              <motion.p 
-                className="text-xl sm:text-2xl md:text-3xl font-medium text-corporate-orange-light mt-8"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8, duration: 0.6 }}
-              >
-                Minimizing Downtime, Maximizing Uptime
-              </motion.p>
             </motion.div>
 
             {/* Enhanced Description */}

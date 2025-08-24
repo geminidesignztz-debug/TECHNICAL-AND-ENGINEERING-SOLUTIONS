@@ -209,24 +209,7 @@ export function ServicesPage() {
               Explore our comprehensive range of specialized services designed to meet your industrial needs.
             </motion.p>
 
-            {/* Search and Filter Section */}
-            <motion.div
-              className="max-w-2xl mx-auto"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.6 }}
-            >
-              <div className="bg-white rounded-full shadow-lg p-2 flex items-center">
-                <input
-                  type="text"
-                  placeholder="Search our services..."
-                  className="flex-1 px-6 py-3 bg-transparent focus:outline-none text-corporate-grey-dark"
-                />
-                <Button className="bg-corporate-blue hover:bg-corporate-blue-dark text-white rounded-full px-8">
-                  Search
-                </Button>
-              </div>
-            </motion.div>
+
           </motion.div>
         </div>
 

@@ -11,6 +11,16 @@ import { Link } from 'react-router-dom';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import EngineeringShowcase from '../components/EngineeringShowcase';
 
+// Import images
+import infraredThermography from '../assets/infaredthermography.png';
+import powerQualityAnalysis from '../assets/powerqualityanalysis.png';
+import vibrationAnalysis from '../assets/vibrationalanalysis.png';
+import batteryInspection from '../assets/Battery Impedance Inspection.png';
+import acousticImaging from '../assets/Industrial Acoustic Imaging.png';
+import nonVoltage from '../assets/Non-Voltage & Current Measurement.png';
+import earthResistance from '../assets/Earth Resistance Measurement.png';
+import oilMonitoring from '../assets/Oil Condition Monitoring.jpg';
+
 export function HomePage() {
   const stats = [
     { icon: Shield, value: '99.9%', label: 'Reliability Rate', color: 'text-green-500' },
@@ -23,7 +33,7 @@ export function HomePage() {
     {
       title: 'Infrared Thermography',
       description: 'Using the Fluke Ti480-PRO 60 Hz high-resolution thermal camera, we provide detailed thermal imaging to identify hot spots.',
-      image: '../assets/infrared-thermography.jpg',
+      image: infraredThermography,
       gradient: 'from-red-500 to-orange-500',
       features: ['High-resolution thermal imaging', 'Hot spot identification', 'Equipment diagnostics', 'Energy loss detection'],
       route: '/services/infrared-thermography'
@@ -31,7 +41,7 @@ export function HomePage() {
     {
       title: 'Power Quality Analysis',
       description: 'With the Fluke 1777 Power Quality Analyzer, we measure over 500 parameters, including harmonics, dips, swells, and transients.',
-      image: '../assets/power-quality-analysis.jpg',
+      image: powerQualityAnalysis,
       gradient: 'from-blue-600 to-indigo-600',
       features: ['Harmonics measurement', 'Voltage dips & swells', 'Transient detection', 'Power factor analysis'],
       route: '/services/power-quality-analysis'
@@ -39,7 +49,7 @@ export function HomePage() {
     {
       title: 'Advanced Vibration Analysis',
       description: 'We detect unbalance, looseness, misalignment, and bearing failures in motors, fans, blowers, pumps, compressors, and gearboxes.',
-      image: '../assets/vibration-analysis.jpg',
+      image: vibrationAnalysis,
       gradient: 'from-purple-500 to-violet-600',
       features: ['Motor & pump diagnostics', 'Bearing failure detection', 'Misalignment analysis', 'Unbalance identification'],
       route: '/services/vibration-analysis'
@@ -47,7 +57,7 @@ export function HomePage() {
     {
       title: 'Battery Impedance Inspection',
       description: 'We conduct comprehensive performance tests on battery banks to ensure reliable power backup for critical systems.',
-      image: '../assets/battery-inspection.jpg',
+      image: batteryInspection,
       gradient: 'from-yellow-500 to-amber-600',
       features: ['Battery bank testing', 'Performance analysis', 'Backup system verification', 'Reliability assessment'],
       route: '/services/battery-inspection'
@@ -55,7 +65,7 @@ export function HomePage() {
     {
       title: 'Industrial Acoustic Imaging',
       description: 'Using the Fluke ii915 Acoustic Imager, we accurately locate and quantify air, gas, and vacuum leaks.',
-      image: '../assets/acoustic-imaging.jpg',
+      image: acousticImaging,
       gradient: 'from-green-500 to-emerald-600',
       features: ['Leak detection', 'Air system analysis', 'Gas leak quantification', 'Vacuum system testing'],
       route: '/services/acoustic-imaging'
@@ -63,7 +73,7 @@ export function HomePage() {
     {
       title: 'Non-Voltage & Current Measurement',
       description: 'Our Fluke 378 FC True RMS Clamp Meter enables non-contact voltage and current measurements.',
-      image: '../assets/current-measurement.jpg',
+      image: nonVoltage,
       gradient: 'from-cyan-500 to-teal-600',
       features: ['Non-contact measurement', 'True RMS analysis', 'Current monitoring', 'Voltage verification'],
       route: '/services/current-measurement'
@@ -71,7 +81,7 @@ export function HomePage() {
     {
       title: 'Earth Resistance Measurement',
       description: 'We test earth ground loops and leakage currents, even in difficult-to-access areas, to ensure effective grounding and electrical safety.',
-      image: '../assets/earth-resistance.jpg',
+      image: earthResistance,
       gradient: 'from-orange-500 to-red-600',
       features: ['Ground loop testing', 'Leakage current analysis', 'Safety verification', 'Grounding assessment'],
       route: '/services/earth-resistance'
@@ -79,7 +89,7 @@ export function HomePage() {
     {
       title: 'Oil Condition Monitoring',
       description: 'We perform detailed analysis of hydraulic and lubrication oil using advanced laboratory techniques.',
-      image: '../assets/oil-monitoring.jpg',
+      image: oilMonitoring,
       gradient: 'from-slate-600 to-gray-700',
       features: ['Oil analysis', 'Contamination testing', 'Viscosity measurement', 'Wear particle detection'],
       route: '/services/oil-monitoring'
@@ -108,15 +118,14 @@ export function HomePage() {
     '../assets/homepage3.webp',
     '../assets/homepage4.webp',
     '../assets/homepage5.webp',
-    '../assets/homepage6.webp',
-    '../assets/homepage7.webp'
+    '../assets/homepage6.webp'
   ].map(path => new URL(path, import.meta.url).href);
 
   const [currentSlide, setCurrentSlide] = React.useState(0);
   React.useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slideshowImages.length);
-    }, 3500);
+    }, 2000);
     return () => clearInterval(interval);
   }, [slideshowImages.length]);
 
@@ -177,20 +186,8 @@ export function HomePage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6, duration: 0.8 }}
               >
-                <span className="block text-white">TECHNICAL &</span>
-                <span className="block text-white">ENGINEERING</span>
-                <motion.span 
-                  className="block bg-corporate-orange px-8 py-4 rounded-2xl inline-block mt-6 text-white relative overflow-hidden hover-lift"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-                    animate={{ x: [-100, 300] }}
-                    transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
-                  />
-                  SOLUTIONS
-                </motion.span>
+                <span className="block text-white">Engineering Precision,</span>
+                <span className="block text-white">Monitoring with Insight.</span>
               </motion.h1>
               
               <motion.p 
@@ -211,7 +208,6 @@ export function HomePage() {
               transition={{ delay: 1, duration: 0.6 }}
             >
               <p className="text-xl text-gray-100 leading-relaxed">
-                Transform your operations with cutting-edge engineering diagnostics and condition-based monitoring. 
                 We deliver innovative solutions that ensure peak performance and maximum reliability for your critical assets.
               </p>
             </motion.div>
