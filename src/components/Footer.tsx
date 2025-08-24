@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin } from 'lucide-react';
-import logoImage from 'figma:asset/fc32a1188f420b43c5a81277275b1c17d9480550.png';
+import logoImage from '../assets/footer.png';
 
 export function Footer() {
   const navigation = [

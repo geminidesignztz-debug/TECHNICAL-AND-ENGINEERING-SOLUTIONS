@@ -192,56 +192,7 @@ export function LegalSection() {
           </div>
         </div>
 
-        {/* Why Choose Us - Legal Perspective */}
-        <div className="mt-16">
-          <Card className="corporate-shadow-lg bg-corporate-blue/5 border-corporate-blue/20">
-            <CardContent className="p-8">
-              <div className="text-center mb-8">
-                <Shield className="h-16 w-16 text-corporate-blue mx-auto mb-4" />
-                <h3 className="text-2xl font-bold text-corporate-black mb-4">
-                  Why Choose Technical & Engineering Solutions
-                </h3>
-                <p className="text-corporate-grey max-w-2xl mx-auto">
-                  Our commitment to legal compliance and professional standards ensures reliable, trustworthy service
-                </p>
-              </div>
 
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-white rounded-full mx-auto mb-4 flex items-center justify-center corporate-shadow">
-                    <CheckCircle className="h-8 w-8 text-corporate-blue" />
-                  </div>
-                  <h4 className="font-semibold text-corporate-black mb-2">Fully Licensed</h4>
-                  <p className="text-sm text-corporate-grey-dark">All required business and professional licenses</p>
-                </div>
-                
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-white rounded-full mx-auto mb-4 flex items-center justify-center corporate-shadow">
-                    <Award className="h-8 w-8 text-corporate-blue" />
-                  </div>
-                  <h4 className="font-semibold text-corporate-black mb-2">Certified Quality</h4>
-                  <p className="text-sm text-corporate-grey-dark">ISO 9001:2015 quality management certification</p>
-                </div>
-                
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-white rounded-full mx-auto mb-4 flex items-center justify-center corporate-shadow">
-                    <Shield className="h-8 w-8 text-corporate-blue" />
-                  </div>
-                  <h4 className="font-semibold text-corporate-black mb-2">Insured & Protected</h4>
-                  <p className="text-sm text-corporate-grey-dark">Comprehensive insurance coverage</p>
-                </div>
-                
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-white rounded-full mx-auto mb-4 flex items-center justify-center corporate-shadow">
-                    <Globe className="h-8 w-8 text-corporate-blue" />
-                  </div>
-                  <h4 className="font-semibold text-corporate-black mb-2">International Standards</h4>
-                  <p className="text-sm text-corporate-grey-dark">Compliant with global best practices</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
       </div>
     </section>
   );

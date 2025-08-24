@@ -1,0 +1,130 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import site1 from '../assets/site1.webp';
+import site2 from '../assets/site2.webp';
+import site3 from '../assets/site3.webp';
+import site4 from '../assets/site4.webp';
+
+const projects = [
+  {
+    id: 1,
+    image: site1,
+    title: "ENGINEERING SITE VISIT – ARUSHA",
+    description: "STRUCTURAL INSPECTION | EQUIPMENT TESTING",
+    showPrev: true,
+  },
+  {
+    id: 2,
+    image: site2,
+    title: "ENGINEERING SITE VISIT – DAR ES SALAAM",
+    description: "MAINTENANCE INSPECTION | SAFETY AUDIT",
+    showNext: false,
+  },
+  {
+    id: 3,
+    image: site3,
+    title: "ENGINEERING SITE VISIT – MWANZA",
+    description: "VIBRATION ANALYSIS | THERMAL IMAGING",
+    showNext: false,
+  },
+  {
+    id: 4,
+    image: site4,
+    title: "ENGINEERING SITE VISIT – DODOMA",
+    description: "ELECTRICAL TESTING | PREVENTIVE MAINTENANCE",
+    showNext: true,
+  }
+];
+
+export default function EngineeringShowcase() {
+  return (
+    <section className="py-32 bg-white">
+      <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Title */}
+        <div className="text-center mb-20">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            Project Showcase
+          </h2>
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            Explore our recent engineering projects and site visits across Tanzania
+          </p>
+        </div>
+
+        {/* Project Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
+          {projects.map((project) => (
+                          className="group relative h-[800px] overflow-hidden rounded-2xl shadow-2xl transform-gpu bg-gray-900"
+              whileHover={{ y: -5 }}
+              transition={{ duration: 0.3 }}
+            >
+              {/* Background Image Container */}
+              <motion.div 
+                className="absolute inset-0 w-full h-full"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.7 }}
+              >
+                <motion.img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover object-center"
+                />
+                {/* Gradient Overlay for Text Readability */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80" />
+              </div>
+
+              {/* Content Container - Positioned at Bottom */}
+              <div className="absolute inset-x-0 bottom-0 p-8 z-10">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className="space-y-4"
+                >
+                  {/* Project Category Badge */}
+                  <div className="flex items-center space-x-3">
+                    <span className="inline-block px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full text-xs font-medium text-white">
+                      SITE VISIT
+                    </span>
+                    <span className="h-px flex-1 bg-white/20" />
+                  </div>
+
+                  {/* Project Title and Description */}
+                  <div className="space-y-2">
+                    <h3 className="text-xl font-bold text-white leading-tight">
+                      {project.title}
+                    </h3>
+                    <p className="text-sm text-gray-300 font-medium">
+                      {project.description}
+                    </p>
+                  </div>
+
+                  {/* Bottom Meta Info */}
+                  <div className="flex items-center justify-between pt-4 border-t border-white/10">
+                    <div className="flex items-center space-x-4 text-white/70">
+                      {project.showPrev && (
+                        <motion.span 
+                          className="text-sm font-medium hover:text-white cursor-pointer flex items-center"
+                          whileHover={{ x: -3 }}
+                        >
+                          ← PREV
+                        </motion.span>
+                      )}
+                      {project.showNext && (
+                        <motion.span 
+                          className="text-sm font-medium hover:text-white cursor-pointer flex items-center"
+                          whileHover={{ x: 3 }}
+                        >
+                          NEXT →
+                        </motion.span>
+                      )}
+                    </div>
+                    <span className="text-xs tracking-widest text-white/50 uppercase">Engineering</span>
+                  </div>
+                </motion.div>
+              </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

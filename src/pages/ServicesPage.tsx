@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
-import { Thermometer, Activity, Droplets, Zap, Settings, Users, CheckCircle, ArrowRight, Download, Calendar } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Thermometer, Activity, Droplets, Zap, Settings, Users, CheckCircle, ArrowRight, Download, Calendar, Image as ImageIcon } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
 import { Button } from '../components/ui/button';
@@ -9,64 +10,148 @@ import { Progress } from '../components/ui/progress';
 export function ServicesPage() {
   const services = [
     {
-      icon: Thermometer,
       title: 'Infrared Thermography',
-      description: 'Non-contact temperature measurement and thermal imaging for predictive maintenance and energy efficiency assessments.',
-      features: ['Electrical system inspection', 'Mechanical equipment analysis', 'Building envelope assessment', 'Process monitoring'],
-      benefits: ['Early fault detection', 'Energy savings up to 20%', 'Reduced fire risk', 'Compliance monitoring'],
-      color: 'from-red-500 to-orange-500',
-      bgColor: 'bg-red-50',
-      iconColor: 'text-red-600'
+      image: '/src/assets/infrared-thermography.jpg',
+      description: 'Using the Fluke Ti480-PRO 60 Hz high-resolution thermal camera, we provide detailed thermal imaging to identify hot spots.',
+      features: [
+        'Electrical system inspection',
+        'Mechanical equipment analysis',
+        'Building envelope assessment',
+        'Process monitoring'
+      ],
+      benefits: [
+        'Early fault detection',
+        'Prevent equipment failures',
+        'Energy efficiency optimization',
+        'Predictive maintenance insights'
+      ],
+      color: 'from-red-500 to-orange-500'
     },
     {
-      icon: Activity,
-      title: 'Vibration Analysis',
-      description: 'Comprehensive vibration monitoring and analysis to detect mechanical issues before they cause equipment failure.',
-      features: ['Bearing condition monitoring', 'Shaft alignment verification', 'Balance assessment', 'Resonance analysis'],
-      benefits: ['Prevent catastrophic failures', 'Extend equipment life', 'Optimize maintenance schedules', 'Reduce unplanned downtime'],
-      color: 'from-blue-500 to-purple-500',
-      bgColor: 'bg-blue-50',
-      iconColor: 'text-blue-600'
+      title: 'Power Quality Analysis',
+      image: '/src/assets/power-quality.jpg',
+      description: 'With the Fluke 1777 Power Quality Analyzer, we measure over 500 parameters, including harmonics, dips, swells, and transients.',
+      features: [
+        'Harmonics measurement',
+        'Voltage fluctuation analysis',
+        'Power factor monitoring',
+        'Load analysis'
+      ],
+      benefits: [
+        'Improved power reliability',
+        'Reduced energy costs',
+        'Equipment protection',
+        'Compliance verification'
+      ],
+      color: 'from-blue-600 to-indigo-600'
     },
     {
-      icon: Droplets,
-      title: 'Oil Analysis',
-      description: 'Laboratory testing and analysis of lubricating oils to determine equipment health and optimize maintenance schedules.',
-      features: ['Contamination detection', 'Wear particle analysis', 'Chemical property testing', 'Trend analysis reporting'],
-      benefits: ['Optimize oil change intervals', 'Detect internal wear', 'Prevent component failure', 'Reduce maintenance costs'],
-      color: 'from-green-500 to-teal-500',
-      bgColor: 'bg-green-50',
-      iconColor: 'text-green-600'
+      title: 'Advanced Vibration Analysis',
+      image: '/src/assets/vibration-analysis.jpg',
+      description: 'We detect unbalance, looseness, misalignment, and bearing failures in motors, fans, blowers, pumps, compressors, and gearboxes.',
+      features: [
+        'Equipment condition monitoring',
+        'Bearing fault detection',
+        'Alignment verification',
+        'Dynamic balancing'
+      ],
+      benefits: [
+        'Extended equipment life',
+        'Reduced maintenance costs',
+        'Prevented breakdowns',
+        'Optimized performance'
+      ],
+      color: 'from-purple-500 to-violet-600'
     },
     {
-      icon: Zap,
-      title: 'Motor Circuit Analysis',
-      description: 'Electrical testing of motor circuits to identify developing problems in motor-driven equipment.',
-      features: ['Insulation resistance testing', 'Power quality analysis', 'Motor efficiency testing', 'Control circuit verification'],
-      benefits: ['Improve motor efficiency', 'Prevent electrical failures', 'Ensure safety compliance', 'Reduce energy costs'],
-      color: 'from-yellow-500 to-orange-500',
-      bgColor: 'bg-yellow-50',
-      iconColor: 'text-yellow-600'
+      title: 'Battery Impedance Inspection',
+      image: '/src/assets/battery-inspection.jpg',
+      description: 'We conduct comprehensive performance tests on battery banks to ensure reliable power backup for critical systems.',
+      features: [
+        'Capacity testing',
+        'Internal resistance measurement',
+        'Connection integrity check',
+        'Temperature monitoring'
+      ],
+      benefits: [
+        'Reliable backup power',
+        'Extended battery life',
+        'Prevented failures',
+        'Optimized maintenance'
+      ],
+      color: 'from-yellow-500 to-amber-600'
     },
     {
-      icon: Settings,
-      title: 'Electrical Testing',
-      description: 'Comprehensive electrical system testing and certification for safety and compliance requirements.',
-      features: ['Power system analysis', 'Ground fault testing', 'Load bank testing', 'Relay protection testing'],
-      benefits: ['Ensure electrical safety', 'Regulatory compliance', 'System optimization', 'Risk mitigation'],
-      color: 'from-purple-500 to-pink-500',
-      bgColor: 'bg-purple-50',
-      iconColor: 'text-purple-600'
+      title: 'Industrial Acoustic Imaging',
+      image: '/src/assets/acoustic-imaging.jpg',
+      description: 'Using the Fluke ii915 Acoustic Imager, we accurately locate and quantify air, gas, and vacuum leaks.',
+      features: [
+        'Compressed air leak detection',
+        'Gas leak identification',
+        'Vacuum system testing',
+        'Ultrasonic analysis'
+      ],
+      benefits: [
+        'Energy cost savings',
+        'Safety improvement',
+        'System efficiency',
+        'Environmental compliance'
+      ],
+      color: 'from-green-500 to-emerald-600'
     },
     {
-      icon: Users,
-      title: 'Consulting Services',
-      description: 'Expert technical consulting and training services to help organizations implement effective maintenance strategies.',
-      features: ['Maintenance program development', 'Technical training', 'Equipment specification', 'Reliability consulting'],
-      benefits: ['Strategic planning support', 'Knowledge transfer', 'Best practice implementation', 'Long-term partnerships'],
-      color: 'from-indigo-500 to-blue-500',
-      bgColor: 'bg-indigo-50',
-      iconColor: 'text-indigo-600'
+      title: 'Non-Voltage & Current Measurement',
+      image: '/src/assets/current-measurement.jpg',
+      description: 'Our Fluke 378 FC True RMS Clamp Meter enables non-contact voltage and current measurements.',
+      features: [
+        'True RMS measurement',
+        'Harmonic analysis',
+        'Power factor testing',
+        'Load monitoring'
+      ],
+      benefits: [
+        'Safe measurements',
+        'Accurate diagnostics',
+        'Real-time monitoring',
+        'Efficient troubleshooting'
+      ],
+      color: 'from-cyan-500 to-teal-600'
+    },
+    {
+      title: 'Earth Resistance Measurement',
+      image: '/src/assets/earth-resistance.jpg',
+      description: 'We test earth ground loops and leakage currents, even in difficult-to-access areas, to ensure effective grounding and electrical safety.',
+      features: [
+        'Ground resistance testing',
+        'Soil resistivity analysis',
+        'Leakage current measurement',
+        'Bonding verification'
+      ],
+      benefits: [
+        'Enhanced safety',
+        'Compliance assurance',
+        'Lightning protection',
+        'Equipment protection'
+      ],
+      color: 'from-orange-500 to-red-600'
+    },
+    {
+      title: 'Oil Condition Monitoring',
+      image: '/src/assets/oil-monitoring.jpg',
+      description: 'We perform detailed analysis of hydraulic and lubrication oil using advanced laboratory techniques.',
+      features: [
+        'Viscosity testing',
+        'Contamination analysis',
+        'Wear particle monitoring',
+        'Chemical composition'
+      ],
+      benefits: [
+        'Extended oil life',
+        'Equipment protection',
+        'Predictive maintenance',
+        'Cost reduction'
+      ],
+      color: 'from-slate-600 to-gray-700'
     }
   ];
 
@@ -80,92 +165,80 @@ export function ServicesPage() {
   ];
 
   return (
-    <div className="min-h-screen pt-16">
+    <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-24 bg-gradient-to-br from-corporate-blue via-corporate-blue-dark to-corporate-black text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
+      <section className="pt-32 pb-24 bg-gradient-to-br from-slate-50 to-blue-50 relative overflow-hidden">
+        <div className="absolute inset-0">
           <motion.div 
-            className="absolute top-20 left-10 w-96 h-96 bg-corporate-orange rounded-full filter blur-3xl"
-            animate={{
-              x: [0, 100, 0],
-              y: [0, -50, 0],
-              scale: [1, 1.2, 1]
-            }}
-            transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-0 left-0 w-full h-full bg-grid-pattern opacity-5"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.05 }}
+            transition={{ duration: 1 }}
           />
           <motion.div 
-            className="absolute bottom-20 right-10 w-80 h-80 bg-corporate-orange-light rounded-full filter blur-2xl"
+            className="absolute inset-0 bg-gradient-to-br from-corporate-blue/5 to-corporate-orange/5"
             animate={{
-              x: [0, -80, 0],
-              y: [0, 60, 0],
-              scale: [1, 0.8, 1]
+              opacity: [0.5, 0.8, 0.5]
             }}
-            transition={{ duration: 15, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
           />
         </div>
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
-            className="text-center"
-            initial={{ opacity: 0, y: 50 }}
+            className="text-center max-w-4xl mx-auto"
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-            >
-              <Badge className="bg-white/20 text-white border-white/30 px-6 py-2 text-lg backdrop-blur-sm mb-6">
-                🔧 Our Services
-              </Badge>
-            </motion.div>
-            
             <motion.h1 
-              className="text-4xl md:text-6xl font-bold mb-6"
-              initial={{ opacity: 0, y: 30 }}
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-corporate-blue mb-6 tracking-tight"
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.8 }}
+              transition={{ delay: 0.2, duration: 0.8 }}
             >
-              Engineering Excellence
+              Cutting-Edge Solutions
             </motion.h1>
             
             <motion.p 
-              className="text-xl text-blue-200 max-w-4xl mx-auto leading-relaxed"
+              className="text-lg md:text-xl text-corporate-grey-dark max-w-3xl mx-auto leading-relaxed mb-12"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+            >
+              Explore our comprehensive range of specialized services designed to meet your industrial needs.
+            </motion.p>
+
+            {/* Search and Filter Section */}
+            <motion.div
+              className="max-w-2xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.6 }}
             >
-              Comprehensive engineering diagnostics and condition monitoring solutions designed to optimize your equipment performance, reduce costs, and maximize operational reliability.
-            </motion.p>
+              <div className="bg-white rounded-full shadow-lg p-2 flex items-center">
+                <input
+                  type="text"
+                  placeholder="Search our services..."
+                  className="flex-1 px-6 py-3 bg-transparent focus:outline-none text-corporate-grey-dark"
+                />
+                <Button className="bg-corporate-blue hover:bg-corporate-blue-dark text-white rounded-full px-8">
+                  Search
+                </Button>
+              </div>
+            </motion.div>
           </motion.div>
         </div>
+
+        {/* Decorative Elements */}
+        <div className="absolute left-0 right-0 bottom-0 h-px bg-gradient-to-r from-transparent via-corporate-blue/20 to-transparent"></div>
       </section>
 
       {/* Services Grid */}
-      <section className="py-24 bg-gradient-to-br from-slate-50 to-white">
+      <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <Badge className="bg-corporate-orange/10 text-corporate-orange border-corporate-orange/20 mb-4">
-              Service Portfolio
-            </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold text-corporate-blue mb-6">
-              Cutting-Edge Solutions
-            </h2>
-            <p className="text-xl text-corporate-grey-dark max-w-3xl mx-auto">
-              Explore our comprehensive range of specialized services designed to meet your industrial needs.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-10">
             {services.map((service, index) => {
-              const IconComponent = service.icon;
               return (
                 <motion.div
                   key={index}
@@ -174,87 +247,121 @@ export function ServicesPage() {
                   transition={{ delay: index * 0.1, duration: 0.8 }}
                   viewport={{ once: true }}
                 >
-                  <Card className="group hover-lift interactive-card border-0 modern-shadow bg-white/90 backdrop-blur-sm relative overflow-hidden h-full">
-                    <div className={`absolute top-0 left-0 w-full h-2 bg-gradient-to-r ${service.color}`}></div>
-                    
-                    <CardHeader className="pb-6">
-                      <div className="flex items-start space-x-4">
-                        <motion.div 
-                          className={`w-16 h-16 rounded-2xl flex items-center justify-center bg-gradient-to-br ${service.color} group-hover:scale-110 transition-all duration-300 shadow-lg`}
-                          whileHover={{ rotate: [0, -10, 10, 0] }}
-                          transition={{ duration: 0.6 }}
-                        >
-                          <IconComponent className="w-8 h-8 text-white" />
-                        </motion.div>
-                        <div className="flex-1">
-                          <CardTitle className="text-xl text-corporate-blue group-hover:text-corporate-orange transition-colors mb-2">
-                            {service.title}
-                          </CardTitle>
-                          <CardDescription className="text-corporate-grey-dark leading-relaxed">
-                            {service.description}
-                          </CardDescription>
+                                  <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1, duration: 0.6 }}
+                  viewport={{ once: true }}
+                  whileHover={{ y: -5 }}
+                  className="h-full"
+                >
+                  <Card className="relative overflow-hidden group bg-white border border-slate-100 hover:border-transparent h-full flex flex-col shadow-sm hover:shadow-xl transition-all duration-300">
+                    {/* Service Image Section with Modern Placeholder */}
+                    <div className="relative w-full pt-[60%] overflow-hidden bg-slate-50">
+                      {service.image ? (
+                        <img
+                          src={service.image}
+                          alt={service.title}
+                          className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                          loading="lazy"
+                        />
+                      ) : (
+                        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100">
+                          <div className="text-slate-300 flex flex-col items-center">
+                            <motion.div
+                              animate={{ opacity: [0.5, 1, 0.5] }}
+                              transition={{ duration: 2, repeat: Infinity }}
+                            >
+                              <ImageIcon className="w-16 h-16" />
+                            </motion.div>
+                            <span className="text-sm mt-2">Image Coming Soon</span>
+                          </div>
                         </div>
-                      </div>
-                    </CardHeader>
-                    
-                    <CardContent className="space-y-6">
-                      <Tabs defaultValue="features" className="w-full">
-                        <TabsList className="grid w-full grid-cols-2">
-                          <TabsTrigger value="features">Features</TabsTrigger>
-                          <TabsTrigger value="benefits">Benefits</TabsTrigger>
-                        </TabsList>
-                        
-                        <TabsContent value="features" className="mt-4">
-                          <ul className="space-y-3">
-                            {service.features.map((feature, featureIndex) => (
-                              <motion.li 
-                                key={featureIndex} 
-                                className="flex items-center text-sm text-corporate-grey-dark"
-                                initial={{ opacity: 0, x: -20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                transition={{ delay: featureIndex * 0.1, duration: 0.4 }}
-                                viewport={{ once: true }}
-                              >
-                                <div className={`w-2 h-2 rounded-full mr-3 flex-shrink-0 bg-gradient-to-r ${service.color}`}></div>
-                                {feature}
-                              </motion.li>
-                            ))}
-                          </ul>
-                        </TabsContent>
-                        
-                        <TabsContent value="benefits" className="mt-4">
-                          <ul className="space-y-3">
-                            {service.benefits.map((benefit, benefitIndex) => (
-                              <motion.li 
-                                key={benefitIndex} 
-                                className="flex items-center text-sm text-corporate-grey-dark"
-                                initial={{ opacity: 0, x: -20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                transition={{ delay: benefitIndex * 0.1, duration: 0.4 }}
-                                viewport={{ once: true }}
-                              >
-                                <CheckCircle className="w-4 h-4 text-green-500 mr-3 flex-shrink-0" />
-                                {benefit}
-                              </motion.li>
-                            ))}
-                          </ul>
-                        </TabsContent>
-                      </Tabs>
-                      
-                      <motion.div 
-                        className="pt-4 border-t border-gray-100"
-                        whileHover={{ x: 5 }}
-                      >
-                        <Button 
-                          variant="ghost" 
-                          className="text-corporate-orange hover:text-corporate-orange-dark p-0 h-auto group"
+                      )}
+                      {/* Gradient Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      {/* Service Badge */}
+                      <div className="absolute bottom-4 left-4 right-4">
+                        <motion.div
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.2 }}
+                          className={`bg-gradient-to-r ${service.color} text-white text-xs uppercase tracking-wider py-1 px-3 rounded-full inline-flex items-center`}
                         >
-                          Learn More About This Service
-                          <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                          Premium Service
+                        </motion.div>
+                      </div>
+                    </div>
+
+                    {/* Content Section */}
+                    <div className="flex-1 flex flex-col p-6">
+                      <div className="mb-4">
+                        <h3 className="text-xl font-bold text-corporate-blue mb-2 group-hover:text-corporate-orange transition-colors">
+                          {service.title}
+                        </h3>
+                        <p className="text-corporate-grey-dark text-sm leading-relaxed line-clamp-3">
+                          {service.description}
+                        </p>
+                      </div>
+                    
+                      <div className="flex-1">
+                        <Tabs defaultValue="features" className="flex-1">
+                          <TabsList className="grid w-full grid-cols-2 bg-slate-50">
+                            <TabsTrigger value="features" className="text-sm">Features</TabsTrigger>
+                            <TabsTrigger value="benefits" className="text-sm">Benefits</TabsTrigger>
+                          </TabsList>
+                          
+                          <TabsContent value="features" className="mt-4">
+                            <ul className="space-y-2">
+                              {service.features.slice(0, 3).map((feature, featureIndex) => (
+                                <motion.li 
+                                  key={featureIndex} 
+                                  className="flex items-center text-sm text-corporate-grey-dark"
+                                  initial={{ opacity: 0, x: -10 }}
+                                  whileInView={{ opacity: 1, x: 0 }}
+                                  transition={{ delay: featureIndex * 0.1 }}
+                                  viewport={{ once: true }}
+                                >
+                                  <div className={`w-1.5 h-1.5 rounded-full mr-2 flex-shrink-0 bg-gradient-to-r ${service.color}`}></div>
+                                  <span className="line-clamp-1">{feature}</span>
+                                </motion.li>
+                              ))}
+                            </ul>
+                          </TabsContent>
+                          
+                          <TabsContent value="benefits" className="mt-4">
+                            <ul className="space-y-2">
+                              {service.benefits.slice(0, 3).map((benefit, benefitIndex) => (
+                                <motion.li 
+                                  key={benefitIndex} 
+                                  className="flex items-center text-sm text-corporate-grey-dark"
+                                  initial={{ opacity: 0, x: -10 }}
+                                  whileInView={{ opacity: 1, x: 0 }}
+                                  transition={{ delay: benefitIndex * 0.1 }}
+                                  viewport={{ once: true }}
+                                >
+                                  <CheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
+                                  <span className="line-clamp-1">{benefit}</span>
+                                </motion.li>
+                              ))}
+                            </ul>
+                          </TabsContent>
+                        </Tabs>
+                      </div>
+
+                      <Link to={`/services/${service.title.toLowerCase().replace(/\s+/g, '-')}`} className="mt-6">
+                        <Button 
+                          className="w-full bg-corporate-blue hover:bg-corporate-blue/90 text-white transition-all duration-300 group relative overflow-hidden"
+                        >
+                          <span className="relative z-10 flex items-center justify-center">
+                            Learn More
+                            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                          </span>
                         </Button>
-                      </motion.div>
-                    </CardContent>
+                      </Link>
+                    </div>
                   </Card>
+                </motion.div>
                 </motion.div>
               );
             })}

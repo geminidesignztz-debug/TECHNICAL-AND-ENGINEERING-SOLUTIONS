@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { Button } from './ui/button';
 import { Sheet, SheetContent, SheetTrigger } from './ui/sheet';
-import logoImage from 'figma:asset/fc32a1188f420b43c5a81277275b1c17d9480550.png';
+import logoImage from '../assets/logo.png';
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
