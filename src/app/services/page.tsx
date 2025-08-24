@@ -245,15 +245,15 @@ export default function ServicesPage() {
                       >
                         {(() => {
                           const serviceLinks = [
-                            '/services/monitoring-with-insight',
-                            '/services/infrared-thermography',
-                            '/services/vibration-analysis',
-                            '/services/oil-analysis',
-                            '/services/motor-circuit-analysis',
-                            '/services/electrical-testing',
-                            '/services/consulting-services'
+                            '/services/infrared-thermography-inspection',
+                            '/services/power-quality-analysis',
+                            '/services/advanced-vibration-analysis',
+                            '/services/battery-impedance-inspection',
+                            '/services/industrial-acoustic-imaging-and-leak-testing',
+                            '/services/non-voltage-and-current-measurement',
+                            '/services/earth-resistance-measurement',
+                            '/services/hydraulic-and-lubrication-oil-condition-monitoring'
                           ];
-                          // Only show link if index is within the serviceLinks array
                           if (serviceLinks[index]) {
                             return (
                               <Link href={serviceLinks[index]} passHref legacyBehavior>

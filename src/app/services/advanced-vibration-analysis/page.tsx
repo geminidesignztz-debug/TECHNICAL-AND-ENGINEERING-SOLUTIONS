@@ -1,0 +1,24 @@
+import { Card, CardHeader, CardTitle, CardContent } from '../../../components/ui/card';
+
+export default function AdvancedVibrationAnalysisPage() {
+  return (
+    <main className="bg-[#f6f8fa] min-h-screen py-10 px-4 md:px-16">
+      <section className="max-w-3xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden">
+        <CardHeader className="bg-gradient-to-r from-blue-500 to-purple-500 px-6 py-4">
+          <CardTitle className="text-xl md:text-2xl font-bold text-white">Advanced Vibration Analysis</CardTitle>
+        </CardHeader>
+        <CardContent className="p-6 space-y-6">
+          <p className="text-gray-700 text-base md:text-lg mb-4">
+            We detect unbalance, looseness, misalignment, and bearing failures in motors, fans, blowers, pumps, compressors, and gearboxes.
+          </p>
+          <h2 className="text-lg font-semibold mb-2">Features</h2>
+          <ul className="list-disc pl-5 text-gray-700 mb-4 text-sm md:text-base">
+            <li>Equipment condition monitoring</li>
+            <li>Bearing fault detection</li>
+            <li>Alignment verification</li>
+          </ul>
+        </CardContent>
+      </section>
+    </main>
+  );
+}
